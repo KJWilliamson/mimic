@@ -21,7 +21,8 @@ better.
 """
 
 __author__ = "kamela williamson"
-
+# working with Mai
+# lots of help from Drew
 
 import random
 import sys
@@ -46,7 +47,22 @@ def create_mimic_dict(filename):
             }
     """
     # +++your code here+++
-    pass
+    mimic_dict = {}
+    with open(filename, 'r') as file:
+        text = file.read().split()
+        prev_word = ''
+        for next_word in text:
+            if prev_word not in mimic_dict:
+                mimic_dict[prev_word] = [next_word]
+                prev_word = next_word
+            else:
+                mimic_dict[prev_word].append(next_word)
+                prev_word = next_word
+
+        return(mimic_dict)
+
+
+# create_mimic_dict('imdev.txt')
 
 
 def print_mimic_random(mimic_dict, num_words):
