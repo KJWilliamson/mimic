@@ -75,7 +75,15 @@ def print_mimic_random(mimic_dict, num_words):
         - Repeat this process num_words times
     """
     # +++your code here+++
-    pass
+    start_word = ''
+    for i in range(num_words):
+        word = mimic_dict[start_word]
+        new_word = random.choice(word)
+        print(new_word, end=' ')
+        if new_word not in mimic_dict:
+            start_word = ''
+        else:
+            start_word = random.choice(mimic_dict[new_word])
 
 
 def main(args):
