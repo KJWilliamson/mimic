@@ -21,7 +21,7 @@ better.
 """
 
 __author__ = "kamela williamson"
-# working with Mai
+# working with Mai and she helped a lot.
 # lots of help from Drew
 
 import random
