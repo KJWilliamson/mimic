@@ -20,8 +20,9 @@ You can try adding in line breaks around 70 columns so the output looks
 better.
 """
 
-__author__ = "???"
-
+__author__ = "kamela williamson"
+# working with Mai and she helped a lot.
+# lots of help from Drew
 
 import random
 import sys
@@ -46,7 +47,22 @@ def create_mimic_dict(filename):
             }
     """
     # +++your code here+++
-    pass
+    mimic_dict = {}
+    with open(filename, 'r') as file:
+        text = file.read().split()
+        prev_word = ''
+        for next_word in text:
+            if prev_word not in mimic_dict:
+                mimic_dict[prev_word] = [next_word]
+                prev_word = next_word
+            else:
+                mimic_dict[prev_word].append(next_word)
+                prev_word = next_word
+
+        return(mimic_dict)
+
+
+# create_mimic_dict('imdev.txt')
 
 
 def print_mimic_random(mimic_dict, num_words):
@@ -59,7 +75,15 @@ def print_mimic_random(mimic_dict, num_words):
         - Repeat this process num_words times
     """
     # +++your code here+++
-    pass
+    start_word = ''
+    for i in range(num_words):
+        word = mimic_dict[start_word]
+        new_word = random.choice(word)
+        print(new_word, end=' ')
+        if new_word not in mimic_dict:
+            start_word = ''
+        else:
+            start_word = random.choice(mimic_dict[new_word])
 
 
 def main(args):
